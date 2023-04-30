@@ -53,7 +53,7 @@ exports.accessToken = (req, res) => {
                     console.log(req.session);
                     if (token) {
                         res.writeHead(302, {
-                            Location: `http://${process.env.frontendIPAddress}/home.html`,
+                            Location: `http://${process.env.frontendIPAddress}/index.html?status=1`,
                         });
                         res.end();
                     }
@@ -144,7 +144,7 @@ exports.getCourseAssignments = (req, res) => {
             },
         };
         const request = https.request(
-            "https://www.mycourseville.com/api/v1/public/get/course/assignments?cv_cid=" + cv_cid,
+            "https://www.mycourseville.com/api/v1/public/get/course/assignments?detail=1&cv_cid=" + cv_cid,
             options,
             (response) => {
                 let data = "";
@@ -168,15 +168,8 @@ exports.getCourseAssignments = (req, res) => {
     }
 };
 
-// Outstanding #2
-exports.getAssignmentDetail = (req, res) => {
-    const itemid = req.params.item_id;
-    // You should change the response below.
-
-};
-
 exports.logout = (req, res) => {
     req.session.destroy();
-    res.redirect(`http://${process.env.frontendIPAddress}/login.html`);
+    res.redirect(`http://${process.env.frontendIPAddress}/index.html`);
     res.end();
 };
