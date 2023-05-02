@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/courseville", routes);
 app.get("/", (req, res) => {
-    res.send("Congratulation. This server is successfully run.");
+    res.send("Congratulation. This server is successfully run.<br>" + process.env.backendIPAddress);
 });
 
 app.all("*", (req, res, next) => {

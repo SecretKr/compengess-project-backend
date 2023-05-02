@@ -9,6 +9,7 @@ const authorization_url = `https://www.mycourseville.com/api/oauth/authorize?res
 const access_token_url = "https://www.mycourseville.com/api/oauth/access_token";
 
 exports.authApp = (req, res) => {
+    console.log(authorization_url)
     res.redirect(authorization_url);
 };
 
